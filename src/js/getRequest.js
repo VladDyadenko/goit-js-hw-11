@@ -10,13 +10,12 @@ export const getPromisFoto = async (data, page) => {
     try{
         const response = await axios.get(`${BASE_URL}${API_KEY}&q=${data}${filterRequest}&page=${page}`);
         const fotoItems = await response.data;
-        
-       
+          
         return fotoItems;
     }
     catch (errors) {
         console.error(errors);
-        }
+    }
 
 
 };
