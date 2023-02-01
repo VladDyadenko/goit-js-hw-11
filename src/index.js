@@ -7,7 +7,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 
 import {refs} from "./js/refsElement.js"
-const {galleryEl, form, btnOpenMoreFoto, body} = refs;
+const {galleryEl, form, btnOpenMoreFoto} = refs;
 
 let page = 1;
 
@@ -20,6 +20,7 @@ function onInputTags(e) {
     e.preventDefault();
 
     page =1;
+
     galleryEl.innerHTML = "";
 
     const formData = form.searchQuery.value.trim();
@@ -28,7 +29,7 @@ function onInputTags(e) {
         galleryEl.innerHTML = "";
         Notify.failure("Sorry, there are no images matching your search query. Please try again.");
         return
-    }
+    } 
     getFotoGallery(formData, page);
 
 }
@@ -81,7 +82,7 @@ function getFotoGallery (data, page){
                      
         }
 
-        if(arrayFoto.length >0 && page === 1) {
+        if(arrayFoto.length > 0 && page === 1) {
             Notify.success(`Hooray! We found totalHits ${fotoItems.totalHits} images.`);
             console.log(fotoItems.hits.length);
         } 
@@ -89,7 +90,7 @@ function getFotoGallery (data, page){
             let lastFotoToView =  fotoItems.totalHits - (page-1)*40;
             console.log(lastFotoToView);
             Notify.info(`${lastFotoToView} more photos available for viewing.`)
-        }
+        }  
         
          
     })
@@ -108,6 +109,8 @@ function noFotosToView(){
     galleryEl.insertAdjacentHTML("beforeend",messageLastFhoto )
 }
 
+
+
 function scrollSmoothFoto(data) {
 
     if(data >1){
@@ -117,7 +120,7 @@ function scrollSmoothFoto(data) {
         .firstElementChild.getBoundingClientRect();
 
         window.scrollBy({
-        top: cardHeight +120,
+        top: cardHeight +420,
         behavior: "smooth",
         });
     }
