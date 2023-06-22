@@ -56,7 +56,7 @@ function getFotoGallery (data, page){
     .then(fotoItems => {
         const arrayFoto = fotoItems.hits;
 
-        console.log(fotoItems.totalHits);
+        console.log(fotoItems);
 
         if(arrayFoto.length === 0) {
             
